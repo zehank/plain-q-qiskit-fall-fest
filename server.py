@@ -5,9 +5,11 @@ Backend: Qiskit Statevector simulation (exact, no sampling error).
 Frontend: static/ (vanilla HTML+CSS+JS, no build step, no CDN).
 
 Run:  python3 server.py [port]
+      HOST=0.0.0.0 PORT=8080 python3 server.py     # when something else hosts it
 """
 import json
 import math
+import os
 import sys
 import time
 import warnings
@@ -145,11 +147,18 @@ class Handler(SimpleHTTPRequestHandler):
 
 def main():
     args = [a for a in sys.argv[1:] if not a.startswith("-")]
-    port = int(args[0]) if args else 8765
-    server = ThreadingHTTPServer(("127.0.0.1", port), Handler)
-    url = f"http://127.0.0.1:{port}/"
-    print(f"\n  Plain Q  ->  {url}\n  Ctrl-C to stop.\n")
-    if "--no-open" not in sys.argv:
+
+    # Locally this stays 127.0.0.1 — nothing outside the machine can reach it.
+    # A host that serves the app publicly (Render, Fly, a VPS) sets HOST=0.0.0.0
+    # and PORT=<whatever it assigned>; neither changes the local behaviour.
+    host = os.environ.get("HOST", "127.0.0.1")
+    port = int(args[0]) if args else int(os.environ.get("PORT", 8765))
+
+    server = ThreadingHTTPServer((host, port), Handler)
+    shown = "127.0.0.1" if host in ("0.0.0.0", "::") else host
+    url = f"http://{shown}:{port}/"
+    print(f"\n  Plain Q  ->  {url}   (bound to {host}:{port})\n  Ctrl-C to stop.\n")
+    if host == "127.0.0.1" and "--no-open" not in sys.argv:
         try:
             webbrowser.open(url)
         except Exception:
