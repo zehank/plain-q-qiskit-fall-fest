@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Plain Q · a quantum circuit you can read</title>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="app">
+
+  <header class="top">
+    <div class="brand">
+      <div class="logo"><i></i><i></i></div>
+      <div class="brand-text">
+        <h1>Plain Q</h1>
+        <p id="tagline"></p>
+      </div>
+    </div>
+    <div class="top-actions">
+      <button class="ghost" id="glossaryBtn"><b>?</b><span data-i="glossaryBtn"></span></button>
+      <div class="lang" id="lang">
+        <button data-lang="en" class="on">EN</button>
+        <button data-lang="zh">中文</button>
+      </div>
+    </div>
+  </header>
+
+  <aside class="rail">
+    <section class="rail-block">
+      <h2 class="rail-title"><em>1</em><span data-i="pick"></span></h2>
+      <div class="palette" id="palette"></div>
+    </section>
+
+    <section class="rail-block">
+      <h2 class="rail-title"><em>2</em><span data-i="orStart"></span></h2>
+      <div class="recipes" id="recipes"></div>
+    </section>
+
+    <section class="rail-block rail-foot">
+      <div class="seg">
+        <span data-i="wires"></span>
+        <div class="seg-btns" id="qubitSeg">
+          <button data-n="2" class="on">2</button>
+          <button data-n="3">3</button>
+        </div>
+      </div>
+      <button class="ghost wide" id="clearBtn"><span data-i="clear"></span></button>
+    </section>
+  </aside>
+
+  <main class="stage">
+    <div class="stage-head">
+      <h2 class="rail-title"><em>3</em><span data-i="build"></span></h2>
+      <p class="hint" id="hint"></p>
+    </div>
+    <div class="board" id="board"></div>
+
+    <div class="steps-wrap" id="stepsWrap" hidden>
+      <div class="steps-head"><span id="stepsHead"></span></div>
+      <div class="steps" id="steps"></div>
+    </div>
+
+    <div class="runbar">
+      <div class="live"><i class="dot"></i><span data-i="live"></span></div>
+      <div class="engine" id="engine"></div>
+    </div>
+  </main>
+
+  <section class="results" id="results">
+    <div class="results-empty" id="resultsEmpty"></div>
+    <div class="results-body" id="resultsBody" hidden></div>
+  </section>
+
+</div>
+
+<div class="modal" id="modal" hidden>
+  <div class="modal-card" role="dialog" aria-modal="true">
+    <button class="modal-x" id="modalClose" aria-label="close">×</button>
+    <h3 data-i="glossaryTitle"></h3>
+    <div class="glossary" id="glossary"></div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
