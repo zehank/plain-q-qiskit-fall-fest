@@ -10,7 +10,7 @@ nothing leaves your machine. A later version, with a follow-up tutor on NVIDIA
 Nemotron via Nebius Token Factory, lives at
 <https://github.com/zehank/plain-q>.
 
-`site/` is a static mirror of the same interface, with the same maths ported to
+`docs/` is a static mirror of the same interface, with the same maths ported to
 JavaScript, so GitHub Pages can serve it with no server at all:
 <https://zehank.github.io/plain-q-qiskit-fall-fest/>
 
