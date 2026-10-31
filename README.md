@@ -10,6 +10,15 @@ nothing leaves your machine. A later version, with a follow-up tutor on NVIDIA
 Nemotron via Nebius Token Factory, lives at
 <https://github.com/zehank/plain-q>.
 
+`site/` is a static mirror of the same interface, with the same maths ported to
+JavaScript, so GitHub Pages can serve it with no server at all:
+<https://zehank.github.io/plain-q-qiskit-fall-fest/>
+
+It is **not** the Qiskit build — the Python one in this repo is, and `./run.sh`
+starts it. The two agree on every number, because both do exact statevector
+arithmetic on at most three wires; but if a judge asks "is that Qiskit?", the
+answer for `site/` is no. The footer on the page says so too.
+
 You drag boxes onto wires. A real Qiskit simulation runs behind them. And then the
 page tells you, in one sentence, what you just did — not in amplitudes and basis
 states, but in English (or 中文).
